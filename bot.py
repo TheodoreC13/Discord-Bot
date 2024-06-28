@@ -22,6 +22,18 @@ async def on_ready():
     await channel.send(f'{bot.user} has connected to the botnet and is ~~ready to hack the world~~ ready to follow orders.')
 
 
+# The original code takes an 11 character string in the format 'XXX-XXX-XXX' as a seed, removes the '-', then converts
+#   the string into a long. The conversion is simple and is shown below. I translated this into python to work with my
+#   bot. The ord() function I use below takes a character and returns the unicode integer value for that character. 
+#   long result = 0;
+# 		for (int i = 8; i >= 0; i--) {
+# 			char c = code.charAt(i);
+# 			if (c > 'Z' || c < 'A')
+# 				throw new IllegalArgumentException("codes must be 9 A-Z characters.");
+#
+# 			result += (c - 65) * Math.pow(26, (8 - i));
+# 		}
+# 		return result;
 @bot.command(name="reverseSeed")
 async def reverse_seed(ctx, seedstring: str):
     seedstring.upper()
