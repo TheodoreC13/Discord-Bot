@@ -19,7 +19,7 @@ async def on_ready():
     print(f'{bot.user} has connected to the discord.')
     await bot.wait_until_ready()
     # Channel ID is pulled from another file via Import config
-    channel = bot.get_channel(int(config.generalchat))
+    channel = bot.get_channel(config.generalchat)
     # The double tile here (~~) format part of this line as a strikethrough on discord.
     if channel:
         await channel.send(f'{bot.user} has connected to the botnet and is ~~ready to hack the world~~ '
