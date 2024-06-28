@@ -1,0 +1,40 @@
+# bot.py
+import os
+import config
+import discord
+import math
+from discord.ext import commands
+
+
+botdescription = "A mostly harmless bot used for trying things out"
+intents = discord.Intents.default()
+intents.members = True
+intents.message_content = True
+bot = commands.Bot(command_prefix='!', intents=intents, description=botdescription)
+
+
+# Message is displayed after connection when bot is ready to accept commands
+# This also has another example of native config file being used to obfuscate information.
+@bot.event
+async def on_ready():
+    print(f'{bot.user} has connected to the discord.')
+    channel = bot.get_channel(config.botspamchat)
+    await channel.send(f'{bot.user} has connected to the botnet and is ~~ready to hack the world~~ ready to follow orders.')
+
+
+@bot.command(name="reverseSeed")
+async def reverse_seed(ctx, seedstring: str):
+    seedstring.upper()
+    if len(seedstring) != 9:
+        response = 'wrong number of characters in seed, please try again.'
+        await ctx.send(response)
+    seedint = 0
+    for x in range(0, len(seedstring)):
+        seedint += (ord(seedstring[x])-65) * math.pow(26, 8-x)
+    await ctx.send(f'{int(seedint)}')
+    await ctx.send(f'{seedint} is the long conversion of the given string.')
+
+
+# Token is stored in a native config file
+bot.run(config.bot_token)
+
