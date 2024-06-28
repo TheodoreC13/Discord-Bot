@@ -1,5 +1,4 @@
 # bot.py
-import os
 import config
 import discord
 import math
