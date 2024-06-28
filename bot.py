@@ -1,6 +1,6 @@
 # bot.py
-import config
 import discord
+import config
 import math
 from discord.ext import commands
 
@@ -17,10 +17,13 @@ bot = commands.Bot(command_prefix='!', intents=intents, description=botdescripti
 @bot.event
 async def on_ready():
     print(f'{bot.user} has connected to the discord.')
+    await bot.wait_until_ready()
     # Channel ID is pulled from another file via Import config
-    channel = bot.get_channel(config.botspamchat)
+    channel = bot.get_channel(int(config.generalchat))
     # The double tile here (~~) format part of this line as a strikethrough on discord.
-    await channel.send(f'{bot.user} has connected to the botnet and is ~~ready to hack the world~~ ready to follow orders.')
+    if channel:
+        await channel.send(f'{bot.user} has connected to the botnet and is ~~ready to hack the world~~ '
+                           f'ready to follow orders.')
 
 
 # The original code takes an 11 character string in the format 'XXX-XXX-XXX' as a seed, removes the '-', then converts
