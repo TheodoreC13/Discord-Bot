@@ -18,13 +18,15 @@ bot = commands.Bot(command_prefix='!', intents=intents, description=botdescripti
 @bot.event
 async def on_ready():
     print(f'{bot.user} has connected to the discord.')
+    # Channel ID is pulled from another file via Import config
     channel = bot.get_channel(config.botspamchat)
+    # The double tile here (~~) format part of this line as a strikethrough on discord.
     await channel.send(f'{bot.user} has connected to the botnet and is ~~ready to hack the world~~ ready to follow orders.')
 
 
 # The original code takes an 11 character string in the format 'XXX-XXX-XXX' as a seed, removes the '-', then converts
 #   the string into a long. The conversion is simple and is shown below. I translated this into python to work with my
-#   bot. The ord() function I use below takes a character and returns the unicode integer value for that character. 
+#   bot. The ord() function I use below takes a character and returns the unicode integer value for that character.
 #   long result = 0;
 # 		for (int i = 8; i >= 0; i--) {
 # 			char c = code.charAt(i);
