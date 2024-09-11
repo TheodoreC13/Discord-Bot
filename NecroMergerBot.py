@@ -1,24 +1,5 @@
 # This is a bunch of functions based around the game Necromerger
 
-
-DevourerShards = {
-    "35": 150,
-    "40": 275,
-    "45": 500,
-    "50": 750,
-    "55": 1000,
-    "60": 1500,
-    "65": 2000,
-    "70": 3250,
-    "75": 4500,
-    "80": 5750,
-    "85": 7500,
-    "90": 10000,
-    "95": 12500,
-    "100": 15000
-}
-
-
 def gold_guide():
     goldguide = """
     Gold I've Spent:
@@ -65,6 +46,22 @@ def gems_guide():
 
 # Devourer level base * (100%+Feats bonus) * (100%+Legendaries bonus) * (100%+Other bonus)=Total Shards
 def time_shard_calculator(DevourerLevel, FeatLevel, T1L, T2L, T3L, Robo, ShieldBot, SSLeg, BabyTrueFalse):
+    DevourerShards = {
+        "35": 150,
+        "40": 275,
+        "45": 500,
+        "50": 750,
+        "55": 1000,
+        "60": 1500,
+        "65": 2000,
+        "70": 3250,
+        "75": 4500,
+        "80": 5750,
+        "85": 7500,
+        "90": 10000,
+        "95": 12500,
+        "100": 15000
+    }
     if DevourerLevel % 5 != 0:
         DLremainder = DevourerLevel % 5
         DevourerLevel = str(DevourerLevel - DLremainder)
@@ -331,8 +328,21 @@ def station_cost_calculator(stationNumber=-1, levelNeeded=-1, levelHave=-1):
               " Cosmic runes to get your station level ", levelNeeded)
 
 
+def MonsterCalc():
+    # todo create a clac to determine cost of a certain tier of monster given a station
+    return 0
 
 
+def Nectarguide():
+    # todo
+    return 0
 
 
+def SRguide():
+    # todo
+    return 0
 
+
+def DinoGuide():
+    # todo
+    return 0
